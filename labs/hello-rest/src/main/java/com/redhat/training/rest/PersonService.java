@@ -36,6 +36,7 @@ import com.redhat.training.model.Person;
 //TODO Add a Produces annotation for JSON
 
 @Stateless
+@Path("persons")
 @TransactionManagement(TransactionManagementType.BEAN)
 public class PersonService {
 
