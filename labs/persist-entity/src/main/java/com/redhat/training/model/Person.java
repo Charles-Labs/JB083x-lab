@@ -1,11 +1,13 @@
 package com.redhat.training.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 
 //add required libraries
 
 @Entity
-public class Person {
+public class Person implements Serializable{
 
    //add annotations for primary key
     private Long id;
