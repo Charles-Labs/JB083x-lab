@@ -2,17 +2,22 @@ package com.redhat.training.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 //add required libraries
 
 @Entity
 public class Person implements Serializable{
 
-   //add annotations for primary key
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    //add @Column(name="name") annotation to map column in database table
+    @Column(name="name")
     private String personName;
 
     public Long getId() {
