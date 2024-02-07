@@ -1,7 +1,10 @@
 package com.redhat.training.model;
+
+import javax.persistence.Entity;
+
 //add required libraries
 
-//add @Entity annotation here
+@Entity
 public class Person {
 
    //add annotations for primary key
