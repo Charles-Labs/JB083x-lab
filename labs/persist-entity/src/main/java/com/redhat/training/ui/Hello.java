@@ -60,7 +60,7 @@ public class Hello {
         this.id = id;
     }
     
-    /*public void getPerson() {
+    public void getPerson() {
     	try {
 			String response = personService.getPerson(id);
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(response));
@@ -80,13 +80,13 @@ public class Hello {
 			
 		}
         
-    }*/
+    }
     
 	
-	/*public List<Person> getPersons() {
+	public List<Person> getPersons() {
 		return personService.getAllPersons();
 		
-	}*/
+	}
 	
 	
 	
