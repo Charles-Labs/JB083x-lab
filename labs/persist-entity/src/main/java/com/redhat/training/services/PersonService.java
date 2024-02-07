@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.ejb.EJBException;
 import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 //import persistence related libraries
 import javax.persistence.TypedQuery;
@@ -17,6 +18,7 @@ import com.redhat.training.model.Person;
 public class PersonService {
     //TODO: obtain an EntityManager instance using @PersistenceContext 
 	@PersistenceContext(unitName="hello")
+	private EntityManager em;
 
 	// Simple non-RESTy method for JSF bean invocation
 	public String hello(String name) {
@@ -31,7 +33,8 @@ public class PersonService {
 				// Create a new Person object and persist to database
 				Person p = new Person();
 				p.setName(name);
-				// call persist() method of entity manager to save the data																
+				// call persist() method of entity manager to save the data	
+				em.persist(p);
 				
 				// respond back with Hello and convert the name to UPPERCASE. Also, send the
 				// current time on the server.
