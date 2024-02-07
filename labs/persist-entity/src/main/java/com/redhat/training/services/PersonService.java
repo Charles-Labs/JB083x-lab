@@ -47,10 +47,13 @@ public class PersonService {
 
 	// TODO:add public String getPerson(Long id) method here to fetch result
         // by Person id using find() method 
+	public String getPerson(Long id) {
+		return em.find(Person.class, id).getPersonName();
+	}
 		
 	// Get all Person objects in the Database
 	public List<Person> getAllPersons() {
-		TypedQuery<Person> query = entityManager.createQuery("SELECT p FROM Person p", Person.class);
+		TypedQuery<Person> query = em.createQuery("SELECT p FROM Person p", Person.class);
 		List<Person> persons = query.getResultList();
 
 		return persons;
