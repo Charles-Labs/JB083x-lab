@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.ejb.EJBException;
 import javax.ejb.Stateless;
+import javax.persistence.PersistenceContext;
 //import persistence related libraries
 import javax.persistence.TypedQuery;
 
@@ -15,7 +16,7 @@ import com.redhat.training.model.Person;
 
 public class PersonService {
     //TODO: obtain an EntityManager instance using @PersistenceContext 
-	
+	@PersistenceContext(unitName="hello")
 
 	// Simple non-RESTy method for JSF bean invocation
 	public String hello(String name) {
