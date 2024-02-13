@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.ejb.EJBException;
 import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 //import persistence related libraries
 import javax.persistence.TypedQuery;
 
@@ -15,7 +17,8 @@ import com.redhat.training.model.Person;
 
 public class PersonService {
     //TODO: obtain an EntityManager instance using @PersistenceContext 
-	
+	@PersistenceContext(unitName="hello")
+	private EntityManager em;
 
 	// Simple non-RESTy method for JSF bean invocation
 	public String hello(String name) {
@@ -30,7 +33,8 @@ public class PersonService {
 				// Create a new Person object and persist to database
 				Person p = new Person();
 				p.setName(name);
-				// call persist() method of entity manager to save the data																
+				// call persist() method of entity manager to save the data	
+				em.persist(p);
 				
 				// respond back with Hello and convert the name to UPPERCASE. Also, send the
 				// current time on the server.
@@ -43,10 +47,13 @@ public class PersonService {
 
 	// TODO:add public String getPerson(Long id) method here to fetch result
         // by Person id using find() method 
+	public String getPerson(Long id) {
+		return em.find(Person.class, id).getPersonName();
+	}
 		
 	// Get all Person objects in the Database
 	public List<Person> getAllPersons() {
-		TypedQuery<Person> query = entityManager.createQuery("SELECT p FROM Person p", Person.class);
+		TypedQuery<Person> query = em.createQuery("SELECT p FROM Person p", Person.class);
 		List<Person> persons = query.getResultList();
 
 		return persons;
