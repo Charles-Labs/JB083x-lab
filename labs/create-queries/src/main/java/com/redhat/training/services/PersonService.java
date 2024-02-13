@@ -18,6 +18,20 @@ public class PersonService {
 	private EntityManager entityManager;
 
 	// Get all Person objects in the Database
+  public List<Person> getAllPersons(){
+	  TypedQuery<Person> query = entityManager.createQuery("SELECT p FROM Person p",
+			  Person.class);
+	  
+	  return query.getResultList();
+  }
+  
+  public List<Person> getPersonsWithName(String name) {
+	  TypedQuery<Person> query = entityManager.createQuery("SELECT p FROM Person p "
+	  		+ "where p.name = ?1", Person.class);
+	  query.setParameter(1, name);
+	  
+	  return query.getResultList();
+  }
 
   //Get persons whose name matches the name given in the query
 
