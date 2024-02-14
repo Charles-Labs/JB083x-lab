@@ -38,6 +38,7 @@ import com.redhat.training.model.Person;
 @Stateless
 @Path("persons")
 @Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
 @TransactionManagement(TransactionManagementType.BEAN)
 public class PersonService {
 
